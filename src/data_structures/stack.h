@@ -16,6 +16,6 @@ int is_stack_empty(stack*);
 int check_coord_on_stack(stack* s, int i, int j);
 void push(stack**, item);
 item *peek(stack*);
-item *pop(stack**);
+void pop(stack**);
 
 #endif // STACK
