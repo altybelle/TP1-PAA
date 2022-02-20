@@ -81,10 +81,7 @@ int move_on_map(int lvl, int *max_recursions, int *count_recursions, hero* ness,
             }
         }
 
-
         if (enemy_list[enemy_index].type == 'G') {
-            ness->P = copy.P;
-            ness->K = copy.K;
             if (copy.P > enemy_list[enemy_index].P){
                 push(st, ncoord);
                 return 999;    
