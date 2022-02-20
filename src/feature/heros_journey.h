@@ -12,7 +12,8 @@ typedef struct hero_position {
 } hero_position;
 
 hero_position* get_initial_position(map*);
-int move_on_map(int, hero*, enemy*, stack**, map *m, int, int, int, int, int mat[m->X][m->Y]);
+int move_on_map(int, int*, int*, hero*, enemy*, stack**, map *m, int, int, int, int, int mat[m->X][m->Y]);
 int check_enemy(char, enemy*);
+int final_move(hero*, enemy *, stack **, map *);
 
 #endif // HEROS_JOURNEY

@@ -36,16 +36,17 @@ item *peek(stack* root) {
     return &root->val;
 }
 
-void pop(stack** root) {
+item* pop(stack** root) {
     if (is_stack_empty(*root)) {
-        return;
+        return NULL;
     }
 
     stack *temp = *root;
     *root = (*root)->next;
-    item popped = temp->val;
-
-    printf("POPPED: %d %d\n", popped.i, popped.j);
-
+    item *popped = (item*)malloc(sizeof(item));
+    popped->i = temp->val.i;
+    popped->j = temp->val.j;
     free(temp);
+
+    return popped;
 }
