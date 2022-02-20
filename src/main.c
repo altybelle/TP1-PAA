@@ -9,8 +9,30 @@
 #include "feature/heros_journey.h"
 
 int menu();
+int start(FILE*);
 
 int main() {
+    FILE *f;
+    char stay_running;
+    char file_path[250];
+    
+    do {
+        printf("Insira o caminho do arquivo: ");
+        scanf("%s", file_path);
+
+        f = fopen(file_path, "r");
+        if (!f) {
+            puts("Arquivo não encontrado.");
+        }
+        else {
+            start(f);
+            puts("Deseja continuar rodando o programa (S/N)?");
+            getchar(); stay_running = getchar();
+        }
+    } while (file_path[0] != '0' && (stay_running == 'S' || stay_running == 's'));
+}
+
+int start(FILE *f) {
     int X, Y;
     int max_recursions, count_recursions; 
 
@@ -22,15 +44,9 @@ int main() {
     
     time_t begin, end;
 
-    FILE *f;
     map stage; hero ness;
     enemy* enemy_list = NULL;
     stack* path = NULL;
-    
-    f = fopen("MAP.txt", "r");
-
-    if (!f)
-        return 3;
 
     begin = clock();
 
@@ -69,6 +85,9 @@ int main() {
         printf("Tempo gasto: %.3lf ms\n", time_spent);
         puts("========================================");
     }
+
+    free(enemy_list);
+    free(path);
     
     return 0;
 }
